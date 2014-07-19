@@ -44,6 +44,7 @@ class RegistrationController extends \BaseController {
         // validate form
         $this->registrationForm->validate(Input::all());
 
+        // only get these fields
         extract(Input::only('username', 'email', 'password'));
 
         $user = $this->execute(

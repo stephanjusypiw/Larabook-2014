@@ -6,12 +6,12 @@ use App;
 trait CommandBus {
 
     /**
-     * Exectute the command
+     * Execute the command
      *
      * @param $command
      * @return mixed
      */
-    public function executeCommand($command)
+    public function execute($command)
     {
         return $this->getCommandBus()->execute($command);
     }
