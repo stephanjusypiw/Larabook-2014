@@ -1,11 +1,17 @@
 <?php
 
-
 use Larabook\Forms\RegistrationForm;
 use Larabook\Registration\RegisterUserCommand;
 use Larabook\Core\CommandBus;
 
-class RegistrationController extends \BaseController {
+/**
+ * Class RegistrationController
+ *
+ * @author Valentin PRUGNAUD <valentin@whatdafox.com>
+ * @url http://www.foxted.com
+ */
+class RegistrationController extends \BaseController
+{
 
     use CommandBus;
 
@@ -14,7 +20,6 @@ class RegistrationController extends \BaseController {
      */
     private $registrationForm;
 
-
     /**
      * Constructor
      * @param RegistrationForm $registrationForm
@@ -22,8 +27,9 @@ class RegistrationController extends \BaseController {
     public function __construct(RegistrationForm $registrationForm)
     {
         $this->registrationForm = $registrationForm;
-    }
 
+        $this->beforeFilter('guest');
+    }
 
     /**
      * Show a form to register the user
@@ -40,7 +46,7 @@ class RegistrationController extends \BaseController {
      */
     public function store()
     {
-        $this->registrationForm->validate(Input::all());
+        $this->registrationForm->validate( Input::all() );
 
         extract(Input::only('username', 'email', 'password'));
 
@@ -54,6 +60,5 @@ class RegistrationController extends \BaseController {
 
         return Redirect::home();
     }
-
 
 }

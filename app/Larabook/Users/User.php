@@ -10,6 +10,7 @@ use Eloquent, Hash;
 use Larabook\Registration\Events\UserRegistered;
 use Laracasts\Commander\Events\EventGenerator;
 
+
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait, EventGenerator;
