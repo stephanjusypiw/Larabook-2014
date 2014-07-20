@@ -40,11 +40,8 @@ class RegistrationController extends \BaseController {
      */
     public function store()
     {
-
-        // validate form
         $this->registrationForm->validate(Input::all());
 
-        // only get these fields
         extract(Input::only('username', 'email', 'password'));
 
         $user = $this->execute(
@@ -52,6 +49,8 @@ class RegistrationController extends \BaseController {
         );
 
         Auth::login($user);
+
+        Flash::overlay('Glad to have you as a new Larabook member!');
 
         return Redirect::home();
     }

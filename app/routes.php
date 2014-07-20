@@ -1,10 +1,10 @@
 <?php
 
 
-Event::listen('Larabook.Registration.Events.UserRegistered', function($event)
-{
-    dd('send an email notification');
-});
+//Event::listen('Larabook.Registration.Events.UserRegistered', function($event)
+//{
+//    dd('send an email notification');
+//});
 
 
 
