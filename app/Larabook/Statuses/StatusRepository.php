@@ -19,9 +19,11 @@ class StatusRepository {
      */
     public function getAllForUser(User $user)
     {
-       return $user->statuses()->with('user')->latest()->get();
 
-//        return $user->statuses;
+//      return Status::all();
+      // return $user->statuses()->with('user')->latest()->get();
+
+        return $user->statuses()->get();
     }
     /**
      * @param Status $status
