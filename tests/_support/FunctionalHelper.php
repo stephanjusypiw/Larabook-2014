@@ -1,8 +1,8 @@
 <?php
 namespace Codeception\Module;
 
-// alias the class as TestDummy
 use Laracasts\TestDummy\Factory as TestDummy;
+
 // here you can define custom actions
 // all public methods declared in helper class will be available in $I
 
@@ -24,24 +24,23 @@ class FunctionalHelper extends \Codeception\Module
         $I->click( 'Sign In' );
     }
 
+    public function haveAnAccount($overrides = [])
+    {
+        return $this->have('Larabook\Users\User', $overrides);
+    }
+
     public function postAStatus($body)
     {
         $I = $this->getModule('Laravel4');
-//
-        $I->fillField('Status:', $body);
+
+        $I->fillField('body', $body);
         $I->click('Post Status');
-//       $this->have('Larabook\Statuses\Status', $overrides);
+        //$this->have('Larabook\Statuses\Status', $overrides);
     }
 
     public function have($model, $overrides = [])
     {
         return TestDummy::create($model, $overrides);
-    }
-
-    public function haveAnAccount($overrides = [])
-    {
-       // TestDummy::create('Larabook\Users\User', $overrides);
-        return $this->have('Larabook\Users\User', $overrides);
     }
 
 }

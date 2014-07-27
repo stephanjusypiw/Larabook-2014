@@ -21,9 +21,9 @@ class StatusRepository {
     {
 
 //      return Status::all();
-      // return $user->statuses()->with('user')->latest()->get();
+       return $user->statuses()->with('user')->latest()->get();
 
-        return $user->statuses()->get();
+//        return $user->statuses()->get();
     }
     /**
      * @param Status $status

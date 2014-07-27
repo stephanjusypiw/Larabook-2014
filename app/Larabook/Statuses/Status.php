@@ -1,10 +1,8 @@
 <?php namespace Larabook\Statuses;
 
-
-
 use Larabook\Statuses\Events\StatusWasPublished;
 use Laracasts\Commander\Events\EventGenerator;
-//use Laracasts\Presenter\PresentableTrait;
+use Laracasts\Presenter\PresentableTrait;
 
 /**
  * Class Status
@@ -12,8 +10,7 @@ use Laracasts\Commander\Events\EventGenerator;
  */
 class Status extends \Eloquent
 {
-    use EventGenerator;
-//    use PresentableTrait;
+    use EventGenerator, PresentableTrait;
 
     /**
      * Fillable fields for a new status
@@ -21,16 +18,16 @@ class Status extends \Eloquent
      */
     protected $fillable = [ 'body' ];
 
-//    protected $presenter = "Larabook\Statuses\StatusPresenter";
+    protected $presenter = "Larabook\Statuses\StatusPresenter";
 
     /**
      * A status belongs to a user
      * @return mixed
      */
-//    public function user()
-//    {
-//        return $this->belongsTo('Larabook\Users\User');
-//    }
+    public function user()
+    {
+        return $this->belongsTo('Larabook\Users\User');
+    }
 
     /**
      * Publish a new status
@@ -46,15 +43,5 @@ class Status extends \Eloquent
 
         return $status;
     }
-
-    /**
-     * A status belongs to a user
-     * @return mixed
-     */
-    public function user()
-    {
-        return $this->belongsTo('Larabook\Users\User');
-    }
-
 
 }
