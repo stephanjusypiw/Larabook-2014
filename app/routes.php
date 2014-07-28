@@ -56,3 +56,16 @@ Route::post('statuses',[
     'as'   => 'statuses_path',
     'uses' => 'StatusController@store'
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Users
+|--------------------------------------------------------------------------
+*/
+Route::get('users','UsersController@index');
+
+
+//Route::get('@{username}', [
+//    'as' => 'users.profile',
+//    'uses' => 'Larabook\Controllers\UsersController@show'
+//]);

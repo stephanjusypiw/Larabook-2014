@@ -2,7 +2,7 @@
 
 $I = new FunctionalTester($scenario);
 $I->am('a guest');
-$I->wantTo('Sign up for a Larabook account');
+$I->wantTo('sign up for a larabook account');
 
 $I->amOnPage('/');
 $I->click('Sign Up');
@@ -16,10 +16,9 @@ $I->click('Sign Up');
 
 $I->seeCurrentUrlEquals('');
 $I->see('Welcome to Larabook!');
-
 $I->seeRecord('users', [
     'username' => 'JohnDoe',
     'email' => 'john@example.com'
 ]);
 
-$I->assertTrue(Auth::check());
+$I->assertTrue(Auth::check(), 'The user is logged in');
