@@ -11,17 +11,17 @@ class FunctionalHelper extends \Codeception\Module
 
     public function signIn()
     {
-        $email = "foo@example.com";
-        $password = "foo";
-
-        $this->haveAnAccount( compact( 'email', 'password' ) );
+        $email    = 'foo@example.com';
+        $username = 'Foobar';
+        $password = 'foo';
+        $this->haveAnAccount(compact('username', 'email', 'password'));
 
         $I = $this->getModule('Laravel4');
 
-        $I->amOnPage( '/login' );
-        $I->fillField( 'email', $email );
-        $I->fillField( 'password', $password );
-        $I->click( 'Sign In' );
+        $I->amOnPage('/login');
+        $I->fillField('email', $email);
+        $I->fillField('password', $password);
+        $I->click('Sign In');
     }
 
     public function haveAnAccount($overrides = [])

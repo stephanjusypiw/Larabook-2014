@@ -29,19 +29,18 @@ class StatusController extends \BaseController {
         $this->statusRepository = $statusRepository;
         $this->publishStatusForm = $publishStatusForm;
     }
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $statuses = $this->statusRepository->getAllForUser(Auth::user());
 
-//       $statuses = $this->statusRepository->getAll(Auth::user());
-       $statuses = $this->statusRepository->getAllForUser(Auth::user());
-
+       // dd($statuses);
         return View::make('statuses.index', compact('statuses'));
-	}
+    }
 
 
 	/**
@@ -70,7 +69,7 @@ class StatusController extends \BaseController {
         ));
 //
         Flash::message('Your status has been updated!');
-        return Redirect::refresh();
+        return Redirect::back();
 	}
 
 

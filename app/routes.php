@@ -1,28 +1,21 @@
 <?php
 
-
-//Event::listen('Larabook.Registration.Events.UserRegistered', function($event)
-//{
-//    dd('send an email notification');
-//});
-
 Route::get('/', [
-    'as' => 'home',
+    'as'   => 'home',
     'uses' => 'PagesController@home'
 ]);
 
 /**
  * Registration
  */
+
 Route::get('register', [
-    'as' => 'register_path',
+    'as'   => 'register_path',
     'uses' => 'RegistrationController@create'
 ]);
 
-
-//
 Route::post('register', [
-    'as' => 'register_path',
+    'as'   => 'register_path',
     'uses' => 'RegistrationController@store'
 ]);
 
@@ -30,7 +23,7 @@ Route::post('register', [
  * Sessions
  */
 Route::get('login', [
-    'as' => 'login_path',
+    'as'   => 'login_path',
     'uses' => 'SessionsController@create'
 ]);
 
@@ -40,7 +33,7 @@ Route::post('login', [
 ]);
 
 Route::get('logout', [
-    'as' => 'logout_path',
+    'as'   => 'logout_path',
     'uses' => 'SessionsController@destroy'
 ]);
 
@@ -48,24 +41,24 @@ Route::get('logout', [
  * Statuses
  */
 Route::get('statuses', [
-    'as' => 'statuses_path',
+    'as'   => 'statuses_path',
     'uses' => 'StatusController@index'
 ]);
 
-Route::post('statuses',[
+Route::post('statuses', [
     'as'   => 'statuses_path',
     'uses' => 'StatusController@store'
 ]);
 
-/*
-|--------------------------------------------------------------------------
-| Users
-|--------------------------------------------------------------------------
-*/
-Route::get('users','UsersController@index');
+/**
+ * Users
+ */
+Route::get('users', [
+    'as' => 'users_path',
+    'uses' => 'UsersController@index'
+]);
 
-
-//Route::get('@{username}', [
-//    'as' => 'users.profile',
-//    'uses' => 'Larabook\Controllers\UsersController@show'
-//]);
+Route::get('@{username}', [
+    'as' => 'profile_path',
+    'uses' => 'UsersController@show'
+]);
