@@ -49,11 +49,6 @@ class RegistrationController extends \BaseController
     {
         $this->registrationForm->validate( Input::all() );
 
-//        extract(Input::only('username', 'email', 'password'));
-//
-//        $user = $this->execute(
-//            new RegisterUserCommand($username, $email, $password)
-//        );
 
         $user = $this->execute(RegisterUserCommand::class);
 

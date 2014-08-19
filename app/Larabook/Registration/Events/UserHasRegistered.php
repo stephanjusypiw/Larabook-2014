@@ -5,11 +5,11 @@ namespace Larabook\Registration\Events;
 use Larabook\Users\User;
 
 /**
- * Class UserRegistered
+ * Class UserHasRegistered
  * @package Larabook\Registration\Events
  * @author Valentin PRUGNAUD <valentin@whatdafox.com>
  */
-class UserRegistered {
+class UserHasRegistered {
 
     public $user;
 

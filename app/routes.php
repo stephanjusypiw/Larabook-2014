@@ -1,5 +1,10 @@
 <?php
 
+// for testing purposes
+//Event::listen('Larabook.Registration.Events.UserHasRegistered', function($event) {
+//    dd('Email the new user a welcome message');
+//});
+
 Route::get('/', [
     'as'   => 'home',
     'uses' => 'PagesController@home'
