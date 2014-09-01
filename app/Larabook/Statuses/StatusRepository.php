@@ -38,10 +38,11 @@ class StatusRepository {
      */
     public function getFeedForUser(User $user)
     {
-        $userIds   = $user->followedUsers()->lists('followed_id');
+        $userIds = $user->followedUsers()->lists('followed_id');
+
         $userIds[] = $user->id;
 
-        return Status::whereIn('user_id', $userIds)->latest()->get();
+        return Status::with('comments')->wherein('user_id', $userIds)->latest()->get();
     }
 
 
@@ -55,6 +56,15 @@ class StatusRepository {
         return User::findOrFail($userId)
             ->statuses()
             ->save($status);
+    }
+
+    public function leaveComment($userId, $statusId, $body)
+    {
+        $comment = Comment::leave($body, $statusId);
+
+        User::findOrFail($userId)->comments()->save($comment);
+
+        return $comment;
     }
 
 } 
